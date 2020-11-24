@@ -1,0 +1,281 @@
+
+*{
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    body { padding-top: 0px; }
+}
+
+@font-face {
+  font-family: "GoodDog";
+  src: url("/fonts/GOODDC__.TTF") format("truetype");
+}
+
+body{
+  position: relative;
+  padding-top: 0px;
+  padding-bottom: 10px;
+  background-color: #5DEBF1; //Spray
+  color: #000;
+}
+
+p{
+  padding: 10px;
+}
+
+h1, h3{
+  font-family: GoodDog;
+}
+.navbar{
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.navbar-nav.li a{
+    padding: 5px;
+}
+
+.nav.li a{
+  margin-left: 160px;
+}
+
+.navbar a{
+  display: block;
+  font-size: 18px;
+  text-align: left;
+  list-style-type: none;
+}
+
+#imageBlock{
+  z-index: 2;
+  height: 204px;
+  border: solid;
+  border-width: 2px;
+  border-color: #000;
+  width: auto;
+  background-color: #FCFFFD;
+  box-shadow: 10px 10px 8px #000;
+}
+
+#slideBlock{
+  width: 300px;
+  height: auto;
+  border: solid;
+  border-width: 2px;
+  border-color: #000;
+}
+
+#ribbon1{
+  display: block;
+  background-color: #C23E36;// Mojo
+  height: 20px;
+  margin: 0px;
+}
+
+#ribbon2{
+  display: block;
+  background-color: #1B8E93;// Elm
+  height: 45px;
+  margin: 0px;
+}
+
+#animation1 img{
+  margin-top: 9px;
+  overflow: hidden;
+  float: right;
+}
+
+.footer hr {
+  display: block;
+  margin-top: -16px;
+  margin-left: auto;
+  width: 100%;
+  margin-right: auto;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #000;
+}
+
+#animation2 img{
+  float: center;
+
+}
+
+.page-header{
+  height: 75px;
+  width: 100%;
+  position: fixed;
+  z-index: -1;
+  margin: 0;
+  opacity: 0.8;
+  background-color: #2B7C62;
+}
+
+h1{
+  font-family: "GoodDog";
+  font-size: 72px;
+  color: #1B8E93; // Elm
+  text-align: center;
+  padding: 8px;
+  margin: 0px;
+}
+
+
+i{
+  color: #1B8E93;
+}
+
+#prevBtn, #nextBtn{
+  height: 500px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000;
+}
+
+#contactForm{
+  background-image: url("/assets/images/bones30.png");
+  align-items: center;
+  padding: 10px;
+  border-style: solid;
+  border-width: 1px;
+  min-width: 300px;
+  width: auto;
+  margin: 20px;
+}
+
+#profileForm{
+  background-image: url("/assets/images/bones30.png");
+  align-items: center;
+  padding: 10px;
+  border-style: solid;
+  border-width: 1px;
+  min-width: 300px;
+  width: auto;
+  max-height: 570px;
+  height: auto;
+  margin-bottom: 20px;
+  // overflow: scroll;
+}
+
+#slides{
+    background-color: #5DEBF1;//Spray
+    align-content: center;
+    height: 100%;
+}
+
+.item{
+
+}
+
+input:focus {
+    background-color: #DCDCDC;
+}
+
+.form-text{
+  text-align: center;
+  min-width: 320px;
+}
+
+.form-control{
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  // background-color: #4EB68C;
+  opacity: .6;
+}
+
+.output-secton{
+  width: auto;
+  height: auto;
+  align-content: space-between;
+}
+
+.btn{
+  margin: 1px;
+  width: auto;
+}
+
+ul {
+  padding: 2px;
+  list-style: none;
+}
+
+#showcase{
+  height: 700px;
+  Width: 75%;
+  margin-top: -60px;
+  padding: 40px;
+  align-content: center;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #1B8E93;
+  background-color: #F1F1ED;
+}
+
+#centerContainer{
+  height: auto;
+  max-height: 700px;
+  Width: 65%;
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  align-content: center;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #1B8E93;
+  background-color: #F1F1ED;
+}
+
+#searchContainer{
+  height: 100%;
+  max-width: 73%;
+  margin-top: 20px;
+  padding: 10px;
+  align-content: center;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #1B8E93;
+  background-color: #F1F1ED;
+  overflow-y: auto;
+}
+
+#petImage.img{
+  border-width: 1px;
+  border-color:  #1B8E93;
+  border-style: solid;
+}
+
+#terrier{
+  float: left;
+  margin-left: 40px;
+}
+
+#retriever{
+  float: right;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+#servicesList{
+  text-align: left;
+}
+
+footer{
+    padding-top: 10px;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: justify;
+    font-weight: 600;
+    color: #FCFFFD;
+    background-color: #1B8E93;//Elm
+  }
