@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
+<div class="container-fluid mx-auto">
     <div id="app" class="d-flex">
       <div class="row">
         <div class="card">

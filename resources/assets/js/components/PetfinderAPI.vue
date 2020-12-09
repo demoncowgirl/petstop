@@ -1,98 +1,94 @@
 <template>
-<div class="container">
-    <div id="petSearchInput" class="container">
+<div class="container-fluid mx-auto">
+    <div id="petSearchInput" class="container-fluid mx-auto">
         <div class="row">
-            <div class="card">
-                <div class="card-body">
-                    <h1 class="card-title">Pet Search</h1>
-                    <div class="form-group">
-                        <label for="searchZip">ZipCode</label>
-                        <input type="text" name="zipCode" value="" class="input-sm" placeholder="Zipcode Required" style="width: auto;" v-model='searchZip' required>
+            <h1>Pet Search</h1>
+            <div class="form-group">
+                <label for="searchZip">ZipCode</label>
+                <input type="text" name="zipCode" value="" class="input-sm" placeholder="Zipcode Required" style="width: auto;" v-model='searchZip' required>
 
-                        <label for="animal">Animal Type</label>
-                        <select name="type" v-model='animalType'>
-                            <option value="dog">Dog</option>
-                            <option value="cat">Cat</option>
-                            <option value="bird">Bird</option>
-                            <option value="horse">Horse</option>s
-                            <option value="barnyard">Barnyard</option>
-                            <option value="reptile">Reptile</option>
-                            <option value="smallfurry">Small Furry</option>
-                        </select>
+                <label for="animal">Animal Type</label>
+                <select name="type" v-model='animalType'>
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                    <option value="bird">Bird</option>
+                    <option value="horse">Horse</option>s
+                    <option value="barnyard">Barnyard</option>
+                    <option value="reptile">Reptile</option>
+                    <option value="smallfurry">Small Furry</option>
+                </select>
 
-                        <label for="age">Age</label>
-                        <select name="age" v-model='animalAge'>
-                            <option value=''>Any</option>
-                            <option value="Baby">Baby</option>
-                            <option value="Young">Young</option>
-                            <option value="Adult">Adult</option>
-                            <option value="Senior">Senior</option>
-                        </select>
+                <label for="age">Age</label>
+                <select name="age" v-model='animalAge'>
+                    <option value=''>Any</option>
+                    <option value="Baby">Baby</option>
+                    <option value="Young">Young</option>
+                    <option value="Adult">Adult</option>
+                    <option value="Senior">Senior</option>
+                </select>
 
-                        <!-- todo: add approximate weight to size labels -->
-                        <label for="size">Size</label>
-                        <select name="size" v-model='animalSize'>
-                            <option value=''>Any</option>
-                            <option value="S">Small</option>
-                            <option value="M">Medium</option>
-                            <option value="L">Large</option>
-                            <option value="XL">Extra Large</option>
-                        </select>
+                <!-- todo: add approximate weight to size labels -->
+                <label for="size">Size</label>
+                <select name="size" v-model='animalSize'>
+                    <option value=''>Any</option>
+                    <option value="S">Small</option>
+                    <option value="M">Medium</option>
+                    <option value="L">Large</option>
+                    <option value="XL">Extra Large</option>
+                </select>
 
-                        <label for="sex">Sex</label>
-                        <select name="sex" v-model="animalSex">
-                            <option value=''>Any</option>
-                            <option value="M">Male</option>
-                            <option value="F">Female</option>
-                        </select>
-                        <div>
-                            <input class="btn btn-secondary" style="color: white;" type="submit" id="submitZip" @click="getPet(); showBtn();">
-                            <input class="btn btn-secondary" value="Clear" style="color:white;" type="button" id="reloadForm" @click="reloadForm();">
-                        </div>
-                    </div>
+                <label for="sex">Sex</label>
+                <select name="sex" v-model="animalSex">
+                    <option value=''>Any</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+                <div>
+                    <input class="btn btn-secondary" style="color: white;" type="submit" id="submitZip" @click="getPet(); showBtn();">
+                    <input class="btn btn-secondary" value="Clear" style="color:white;" type="button" id="reloadForm" @click="reloadForm();">
                 </div>
             </div>
         </div>
     </div>
-    <!-- <div><strong><h4>Page Number {{pageNum}}</h4></strong></div>
+</div>
+<!-- <div><strong><h4>Page Number {{pageNum}}</h4></strong></div>
     <div><strong><h4>Offset {{lastOffset}}</h4></strong></div>
     <div><strong><h4>Number of items {{ itemCount }} </h4></strong></div>
     <div><strong><h4>Remainder {{ remainder }} </h4></strong></div> -->
-    <div id="petDisplay" class="container-fluid d-flex p-1 m-0">
-        <div class="row">
-            <div id="prev" class="col-md-1" style="display:none;">
-                <button type="button" class="btn btn-sm" style="height: 100%;" id="prevBtn" @click="previousPage();">
-                    <span class="arrow-icon"><i class="fas fa-arrow-circle-left fa-2x"></i></span>
-                </button>
-            </div>
-            <div class="row col-md-10">
-                <div id="frame" style="min-width: 210px;" class="col col-md-4" v-for="pet in displayArray" v-if="showOutput">
-                    <div class="border border-dark p-2">
-                        <div><strong>Name:</strong> {{ pet.name }}</div>
-                        <div><strong>Location:</strong> {{ pet.city }}</div>
-                        <div><strong>Age:</strong> {{ pet.animalAge }}</div>
-                        <div><strong>Sex:</strong> {{ pet.animalSex }}</div>
-                        <div><strong>Size:</strong> {{ pet.animalSize }}</div>
-                        <div><strong>Breed:</strong> {{ pet.breed }}</div>
-                        <div><strong>Contact Email:</strong> <a style="font-size: 13px" :href="'mailto:'+ pet.email">{{ pet.email }}</a></div>
-                        <div><strong>Contact Phone:</strong> {{ pet.phone }}</div>
-                        <img id="petImage" :src="pet.image" width="200" height="auto" class="image-responsive" />
-                        <div class="m-2">{{ pet.description }}</div>
-                        <div id="petOptions">
-                            <i class="fas fa-paw fa-1x pr-1"></i>
-                            <ul>
-                                <li v-for="petOptions in newOptionsArray">{{ petOptions }}</li>
-                            </ul>
-                            <i class="fas fa-paw fa-1x pr-1"></i>
-                        </div>
+<div id="petDisplay" class="container-fluid d-flex p-1 m-0">
+    <div class="row">
+        <div id="prev" class="col-md-1" style="display:none;">
+            <button type="button" class="btn btn-sm" style="height: 100%;" id="prevBtn" @click="previousPage();">
+                <span class="arrow-icon"><i class="fas fa-arrow-circle-left fa-2x"></i></span>
+            </button>
+        </div>
+        <div class="row col-md-10">
+            <div id="frame" style="min-width: 210px;" class="col col-md-4" v-for="pet in displayArray" v-if="showOutput">
+                <div class="border border-dark p-2">
+                    <div><strong>Name:</strong> {{ pet.name }}</div>
+                    <div><strong>Location:</strong> {{ pet.city }}</div>
+                    <div><strong>Age:</strong> {{ pet.animalAge }}</div>
+                    <div><strong>Sex:</strong> {{ pet.animalSex }}</div>
+                    <div><strong>Size:</strong> {{ pet.animalSize }}</div>
+                    <div><strong>Breed:</strong> {{ pet.breed }}</div>
+                    <div><strong>Contact Email:</strong> <a style="font-size: 13px" :href="'mailto:'+ pet.email">{{ pet.email }}</a></div>
+                    <div><strong>Contact Phone:</strong> {{ pet.phone }}</div>
+                    <img id="petImage" :src="pet.image" width="200" height="auto" class="image-responsive" />
+                    <div class="m-2">{{ pet.description }}</div>
+                    <div id="petOptions">
+                        <i class="fas fa-paw fa-1x pr-1"></i>
+                        <ul>
+                            <li v-for="petOptions in newOptionsArray">{{ petOptions }}</li>
+                        </ul>
+                        <i class="fas fa-paw fa-1x pr-1"></i>
                     </div>
                 </div>
             </div>
-            <div id="next" class="col-md-1" style="display:none;">
-                <button type="button" class="btn btn-sm" style="height: 100%" id="nextBtn" @click="nextPage();">
-                    <span class="arrow-icon"><i class="fas fa-arrow-circle-right fa-2x"></i></span>
-                </button>
-            </div>
+        </div>
+        <div id="next" class="col-md-1" style="display:none;">
+            <button type="button" class="btn btn-sm" style="height: 100%" id="nextBtn" @click="nextPage();">
+                <span class="arrow-icon"><i class="fas fa-arrow-circle-right fa-2x"></i></span>
+            </button>
         </div>
     </div>
 </div>

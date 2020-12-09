@@ -7,59 +7,97 @@ pink-red #9E2A2B RGB 158, 42, 43
 dark red #540B0E RGB 84, 11, 14
  */
 body {
-  background-color: rgba(51, 92, 103, 0.6);
+  height: 100%;
+  background-image: url(/images/bones40.png?03c5f1d09ca23273b5fe3109fbb4b187);
+  background-repeat: no-repeat;
+  width: auto;
+  /*or your image's width*/
+  height: auto;
+  /*or your image's height*/
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
 }
 
 .navbar {
-  margin-top: 100px;
   background-color: #FFF3B0;
   width: 100%;
+  height: 100px;
+  border: none;
+  float: left;
 }
 
 h1 {
   color: #540B0E;
 }
 
-.navbar-collapse ul li a {
-  color: #335C67;
-  justify-content: right;
-  float: right;
+.navbear-header .navbar-brand {
+  float: left;
 }
 
-#logo .images {
+.collapse {
+  justify-content: flex-end;
+}
+
+.navbar-nav ul li a {
+  color: #335C67;
+}
+
+#logo img {
   background-color: rgba(158, 42, 43, 0.5);
+  float: left;
+  margin-left: 20px;
+  z-index: 1;
 }
 
 #imageBlock img {
   margin-top: 120px;
+  margin-left: 20px;
+  width: 200px;
+  height: 200px;
+  float: left;
 }
 
-.container {
+.container-fluid, .container-xl, .container-lg, .container-md, .container-sm {
   margin-top: 60px;
-  /* background-color: #FFF3B0; */
   justify-content: center;
   max-width: 600px;
   height: auto;
 }
 
 .card {
-  width: 420px;
+  width: 680px;
   height: auto;
+  margin-bottom: 120px;
 }
 
 .list {
   width: 320px;
 }
 
-.footer {
-  position: relative;
-  margin-bottom: 0;
-  background-color: #FFF3B0;
+.image img {
+  margin-left: 80px;
+  max-width: 240px;
+  height: auto;
+  float: right;
 }
 
-#animation1 .page-header {
-  position: absolute;
-  color: #FFF3B0;
+.footer {
+  height: 100px;
+  width: 100%;
+  padding: 20px;
+  position: relative;
+  background-color: #FFF3B0;
+  margin-top: -100px;
+}
+
+.footer-text {
+  padding: 15px;
+}
+
+.footer-copyright {
+  justify-content: center;
 }
 
 /*!

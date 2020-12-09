@@ -18,11 +18,11 @@
     </style>
 
 </head>
-<body>
+<body src="{{ asset('assets/images/bones40.png') }}">
       @include('inc._navbar')
-      <!-- <div class="container"> -->
+
         @yield('content')
-      <!-- <div> -->
+
       @include('inc._footer')
 
 
