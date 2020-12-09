@@ -11,11 +11,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
 
     <title>Beth's Natural Pets @yield('title')</title>
-
-    <style type="text/css">
 
     </style>
 

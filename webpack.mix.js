@@ -12,28 +12,11 @@ const tailwindcss = require('tailwindcss');
  | file for the application as well as bundling up all the JS files.
  |
  */
- require('laravel-mix-purgecss');
 
     mix.js('resources/js/app.js', 'public/js')
       .sass('resources/sass/app.scss', 'public/css')
+      .postcss('resources/css/app.css', 'public/css')
       .options({
         processCssUrls: false,
         postCss: [tailwindcss('./tailwind.config.js')],
-      })
-        // .postCss('resources/css/app.css', 'public/css', [
-        //     require('postcss-import'),
-        //     require('tailwindcss'),
-        // ])
-        .purgeCss();
-
-
-        // require('laravel-mix-purgecss');
-        //
-        //
-        // mix.js('src/js/app.js', 'public/js')
-        //     .sass('src/sass/app.scss', 'public/css')
-        //     .options({
-        //         processCssUrls: false,
-        //         postCss: [tailwindcss('./tailwind.config.js')],
-        //     })
-        //     .purgeCss();
+      });

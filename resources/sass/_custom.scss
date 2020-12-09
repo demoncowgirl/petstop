@@ -1,0 +1,61 @@
+/* blue #335C67  RGB 51, 92, 103
+light #FFF3B0  RGB 255, 243, 176
+gold #E09F3E  RGB 224, 159, 62
+pink-red #9E2A2B RGB 158, 42, 43
+dark red #540B0E RGB 84, 11, 14
+ */
+body {
+    background-color: rgba(51, 92, 103, 0.6);
+}
+
+.navbar {
+    margin-top: 100px;
+    background-color: #FFF3B0;
+    width: 100%;
+}
+
+h1 {
+    color: #540B0E;
+}
+
+.navbar-collapse ul li a {
+    color: #335C67;
+    justify-content: right;
+    float: right;
+}
+
+#logo .images {
+    background-color: rgba(158, 42, 43, 0.5);
+}
+
+#imageBlock img {
+    margin-top: 120px;
+}
+
+.container {
+    margin-top: 60px;
+    /* background-color: #FFF3B0; */
+    justify-content: center;
+    max-width: 600px;
+    height: auto;
+}
+
+.card {
+    width: 420px;
+    height: auto;
+}
+
+.list {
+    width: 320px;
+}
+
+.footer {
+    position: relative;
+    margin-bottom: 0;
+    background-color: #FFF3B0;
+}
+
+#animation1 .page-header {
+    position: absolute;
+    color: #FFF3B0;
+}

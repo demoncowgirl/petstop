@@ -12,5 +12,9 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    "style-loader",
+    "css-loader",
+    "postcss-loader"
+  ],
 }
