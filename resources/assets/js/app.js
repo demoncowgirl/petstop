@@ -1,6 +1,6 @@
 import PetfinderAPI from '/components/PetfinderAPI.vue'
 
-// require('./bootstrap');
+require('./bootstrap');
 
  // window.Vue = require('vue');
 
