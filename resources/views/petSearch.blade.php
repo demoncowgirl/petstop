@@ -1,11 +1,7 @@
 @extends('layouts.services')
-<!--
-@section('title', 'Pet Search') -->
 
 @section('content')
-
-        <div id="results">
+        <div id="app">
           <petfinderapi></petfinderapi>
         </div>
-
 @endsection

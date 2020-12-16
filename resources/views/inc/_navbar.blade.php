@@ -45,5 +45,3 @@
       </ul>
     </div>
 </nav>
-<div id="ribbon1" class="row"></div>
-<div id="ribbon2" class="row"></div>

@@ -25,6 +25,9 @@
       </div>
     </div>
   </div>
+<!-- <div id="pets" class="image">
+  <img src="{{ asset('assets/images/piccolo.jpg') }}">
+</div> -->
 </div>
 </div>
 @endsection

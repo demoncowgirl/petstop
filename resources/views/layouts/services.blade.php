@@ -9,30 +9,32 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}" >
+    <script defer src="{{ mix('js/app.js') }}"></script>
 
     <title>Beth's Natural Pets @yield('title')</title>
 </head>
-
-<body src="{{ asset('assets/images/bones40.png') }}">
-
     @include('inc._navbar')
+<body>
+    <div id="services" class="container-fluid">
 
-    @if(Request::is('petSearch'))
-    @include('inc._searchContainer')
-    @elseif(Request::is('vetServices'))
-    @include('inc._searchContainer')
-    @elseif(Request::is('serviceSearch'))
-    @include('inc._centerContainer')
-    <!-- @elseif(!!Request::is('login'))
-    @elseif(!!Request::is('register')) -->
-    @endif
+      @if(Route::has('petSearch'))
+      @include('inc._searchContainer')
 
+      @elseif(Route::has('vetServices'))
+      @include('inc._searchContainer')
 
+      @elseif(Route::has('serviceSearch'))
+      @include('inc._centerContainer')
+      <!-- @elseif(!!Request::is('login'))
+      @elseif(!!Request::is('register')) -->
+      @endif
+
+      @yield('content')
+
+  </div>
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
-    <script src="{{ asset('js/app.js') }}"></script>
 
 </body>
 </html>

@@ -1,14 +1,9 @@
-<footer class="footer font-small pt-1">
-    <!-- Grid row -->
-    <div class="row">
-        <!-- Content -->
-        <div class="footer-text float-right">
-        <h5 class="text-uppercase">Beth's Nautral Pets</h5>
-        <p>For help with the website, call 800-123-4567.</p>
-      </div>
-          <div class="footer-copyright">Beth Salvatore 2018</div>
-            <!-- <div class="overlay">
-              @include('inc._animation2')
-            </div> -->
-      </div>
+<footer class="footer fixed-bottom font-small pt-1 m-0">
+        <div class="footer-text float-left">
+          <h5 class="text-uppercase">Beth's PetStop</h5>
+          <p>Beth Salvatore 2018</p>
+          <!-- <div class="overlay">
+            @include('inc._animation2')
+          </div> -->
+        </div>
 </footer>

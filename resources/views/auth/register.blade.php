@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" style="margin-top: 40px;">
+<div class="container justify-content-center" style="margin-top: 40px;">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="container mx-auto">
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
 

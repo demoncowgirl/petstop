@@ -1,3 +1,39 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+#prevBtn, #nextBtn{
+  height: 500px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000;
+}
+
+#searchContainer {
+  justify-content: center;
+  padding: 10px;
+  border-style: solid;
+  border-width: 1px;
+  min-width: 300px;
+  width: auto;
+  margin: 20px;
+}
+
+#contactForm{
+  align-items: center;
+  padding: 10px;
+  border-style: solid;
+  border-width: 1px;
+  min-width: 300px;
+  width: auto;
+  margin: 20px;
+}
+
+#profileForm{
+  align-items: center;
+  padding: 10px;
+  border-style: solid;
+  border-width: 1px;
+  min-width: 300px;
+  width: auto;
+  max-height: 570px;
+  height: auto;
+  margin-bottom: 20px;
+  // overflow: scroll;
+}
