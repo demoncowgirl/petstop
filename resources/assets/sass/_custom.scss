@@ -78,3 +78,25 @@ transition-delay: 0s;
   margin-bottom: 0px;
   position: sticky;
 }
+
+
+// small mobile phones
+@media screen and (max-width: 575px) and (orientation: landscape) {
+
+  #logo img {
+    visibility: hidden;
+  }
+}
+
+// larger mobile phones and tablets
+@media screen and (min-width: 576px) and (max-width: 811px) and (orientation: landscape){
+
+  #logo img {
+    visibility: hidden;
+  }
+}
+
+
+// tablets
+@media screen and (min-width: 812px) and (max-width: 991) and (orientationi: landscape){
+}

@@ -11,6 +11,7 @@
 |
 */
 // Routes for pages
+Route::get('/','PagesController@getHome');
 Route::get('/home', 'PagesController@getHome');
 Route::get('loginSuccessful', 'PagesController@getLoginSuccessful');
 Route::get('about', 'PagesController@getAbout');
@@ -27,7 +28,7 @@ Route::get('loveOurPets', 'PagesController@getLove');
 Route::get('messages', 'PagesController@getMessages');
 Route::get('users', 'PagesController@getUsers');
 Route::get('search', 'SearchController@getSearchResults');
-Route::get('/blog', 'PagesController@getBlog');
+Route::get('blog', 'PagesController@getBlog');
 
 // Route::get('/{id}', function ($id){
 //   return view('id',{'id'=> $id});

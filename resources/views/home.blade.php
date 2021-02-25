@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
-  <div id="app" class="d-flex">
-  <div class="row">
+  <div class="flex-row">
+    <div id="app" class="d-flex">
+    <div class="container-fluid">
         <div id="app" class="card">
           <div class="card-body">
           <h1 class="card-title">Beth's PetStop</h1>
@@ -14,8 +14,8 @@
       </div>
 
       <div id="pets" class="image">
-        <img src="{{ asset('assets/images/ellie.jpg') }}">
-        <img src="{{ asset('assets/images/peaches.jpg') }}">
+        <img src="{{asset('images/ellie.jpg')}}">
+        <img src="{{asset('images/peaches.jpg')}}">
       </div>
 </div>
 @endsection

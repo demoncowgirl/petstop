@@ -90,256 +90,263 @@
     </div>
 </div>
 </template>
-<script>
-// module.exports = {
-export default ={
-              name: 'petfinderapi',
-                data: function() {
-                return {
-                    showOutput: false,
-                    output: 'basic',
-                    searchZip: '',
-                    petsArray: [],
-                    // option: '',
-                    newOptionsArray: [], // array of manipulated options from api
-                    animalType: '',
-                    animalSize: '',
-                    animalAge: '',
-                    animalSex: '',
-                    itemCount: 3,
-                    pageNum: 0,
-                    remainder: 0,
-                    // lastOffset: 0,
-                    prevBtn: '',
-                    nextBtn: '',
-                    showError: false,
-                    errorMsg: '<h1>There was an error. Please try again.</h1>',
-                    noMatchesFound: '<h1>Sorry, but we did not find any matches.<h1>',
-                    showStatus: true,
-                    fetchingStatus: '<h1>Fetching a list of potential new best friends...</h1>',
-                    apiRequest: null,
-                    apiKey: "Pzl6OrmbLxqQuKEejdrl2EBMrVfaYGoboHsw4e1zb8ztBRHL5u",
-                    apiSecret: "9EWRCDwHXJIAowYJ3xmRa438xDseehynjYsQQJMQ",
-                },
 
-                mounted() {
-                        console.log('Mounted successfully!');
-                    },
-                    created: function() {
-                        this.$url.get("https://api.petfinder.com/v2/animals")
-                            .then(res => {
-                                this.data = res.data;
-                            });
-                    }
-            }
+
+<script>
+export default = {
+    data: function() {
+        return {
+            showOutput: false,
+            output: 'basic',
+            searchZip: '',
+            status: 'adoptable',
+            org:'TX1888',
+            petsArray: [],
+            // option: '',
+            newOptionsArray: [], // array of manipulated options from api
+            animalType: '',
+            animalSize: '',
+            animalAge: '',
+            animalSex: '',
+            itemCount: 3,
+            pageNum: 0,
+            remainder: 0,
+            // lastOffset: 0,
+            prevBtn: '',
+            nextBtn: '',
+            showError: false,
+            errorMsg: '<h1>There was an error. Please try again.</h1>',
+            noMatchesFound: '<h1>Sorry, but we did not find any matches.<h1>',
+            showStatus: true,
+            fetchingStatus: '<h1>Fetching a list of potential new best friends...</h1>',
+            apiRequest: null,
+            apiKey: "Pzl6OrmbLxqQuKEejdrl2EBMrVfaYGoboHsw4e1zb8ztBRHL5u",
+            apiSecret: "9EWRCDwHXJIAowYJ3xmRa438xDseehynjYsQQJMQ",
         },
 
-        methods: {
-            getPet: function() {
-                // Client credentials
-                // Replace these with your key/secret
-                var key = "Pzl6OrmbLxqQuKEejdrl2EBMrVfaYGoboHsw4e1zb8ztBRHL5u";
-                var client_secret = "9EWRCDwHXJIAowYJ3xmRa438xDseehynjYsQQJMQ";
+        // mounted() {
+        //         console.log('Mounted successfully!');
+        //     },
+        //     created: function() {
+        //         this.$url.get("https://api.petfinder.com/v2/animals")
+        //             .then(res => {
+        //                 this.data = res.data;
+        //             });
+        //     }
+    }
+},
 
-                // Call details
-                var status = 'adoptable';
-                var type = 'Dog';
-                var age = 'Adult'; //Baby, Adult, Young
-                var gender = 'Male' //Male, Female
+methods: {
+    getData: function() {
 
+      var status = 'adoptable';
+      var org = 'TX1888';
+      var animal_type='Dog';
+      var age='';
+      var gender='';
+      var size = '';
 
+        // Client credentials for oauth2 token
+        var key = "Pzl6OrmbLxqQuKEejdrl2EBMrVfaYGoboHsw4e1zb8ztBRHL5u";
+        var secret = "9EWRCDwHXJIAowYJ3xmRa438xDseehynjYsQQJMQ";
 
-                // Call the API
-                // This is a POST request, because we need the API to generate a new token for us
-                fetch('https://api.petfinder.com/v2/oauth2/token', {
-                    method: 'POST',
-                    body: 'grant_type=client_credentials&client_id=' + key + '&client_secret=' + secret,
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    }
-                }).then(function(resp) {
+        fetch('https://api.petfinder.com/v2/oauth2/token', {
+            method: 'POST',
+            body: 'grant_type=client_credentials&client_id=' + key + '&client_secret=' + secret,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then(function(resp) {
 
-                    // Return the response as JSON
-                    return resp.json();
+            // Return the response as JSON
+            return resp.json();
 
-                }).then(function(data) {
+        }).then(function(data) {
+          var type =data.token_type;
+          var token = data.access_token;
 
-                    // Log the API data
-                    console.log('token', data);
+          console.log('data', type, token);
+          return data;
 
-                    // Return a second API call
-                    // This one uses the token we received for authentication
-                    return fetch('https://api.petfinder.com/v2/animals?organization=' + org + '&status=' + status + '&type=' + type + '&age=' + age + '&gender=' + gender, {
-                        headers: {
-                            'Authorization': data.token_type + ' ' + data.access_token,
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        }
-                    });
+        }).catch(function(err) {
 
-                }).then(function(resp) {
+            // Log any errors
+            console.log('something went wrong', err);
 
-                    // Return the API response as JSON
-                    return resp.json();
-
-                }).then(function(data) {
-
-
-                }).catch(function(err) {
-
-                    // Log any errors
-                    console.log('something went wrong', err);
-
-                });
-
-              },
-
-                catchResponse: function(data) {
-
-                        // var pets = data.petfinder.pets;
-                        var count = 3;
-                        // var status = 'adoptable';
-                        // var lastOffset = data.petfinder.header.lastOffset.$t;
-                        // console.log(lastOffset);
-                        console.log(data);
-
-                        if (statusCode !== "100") {
-                            console.log('there was an error' + statusCode);
-                            this.showError = true;
-                            this.showStatus = false;
-                            this.showOutput = false;
-                        }
-
-                        for (var i = 0; i < pets.pet.length; i++) {
-                            var currentPet = [];
-
-                            if (pets.pet[i].status === 'adoptable') {
-                                // numberOfItemsViewed += numberOfItemsViewed;
-                                this.showError = false;
-                                this.showStatus = false;
-                                // used in search
-                                currentPet.animalType = pets.pet[i].animal.$t;
-                                currentPet.animalAge = pets.pet[i].age.$t;
-                                currentPet.animalSize = pets.pet[i].size.$t;
-                                currentPet.animalSex = pets.pet[i].sex.$t;
-                                // for response, not displayed
-                                currentPet.id = pets.pet[i].id.$t;
-                                currentPet.zipCode = pets.pet[i].contact.zip.$t;
-                                //for response, displayed
-                                currentPet.city = pets.pet[i].contact.city.$t;
-                                currentPet.name = pets.pet[i].name.$t;
-                                currentPet.description = pets.pet[i].description.$t;
-                                currentPet.email = pets.pet[i].contact.email.$t;
-                                currentPet.phone = pets.pet[i].contact.phone.$t;
-                                currentPet.breed = pets.pet[i].breeds.breed.$t;
-                                currentPet.image = pets.pet[i].media.photos.photo[3].$t;
-                                currentPet.showOutput = true;
-                            }
-
-                            if (pets.pet.mix === 'Yes' || pets.pet[i].breeds.breed.length > 0) {
-                                currentPet.breed = (pets.pet[i].breeds.breed[0].$t) + ' / ' + (pets.pet[i].breeds.breed[1].$t)
-                            } else {
-                                currentPet.breed = pets.pet[i].breeds.breed.$t;
-                            }
-
-                            if (currentPet.phone == undefined) {
-                                currentPet.phone = "N/A";
-                            }
-
-                            if (currentPet.email == undefined) {
-                                currentPet.email = "N/A";
-                            }
-
-                            if (currentPet.description == undefined) {
-                                currentPet.description = "N/A";
-                                console.log("N/A");
-                            }
-
-                            var obj = pets.pet[i].options.option;
-                            var optionsArray = [];
-                            var options = "";
-                            var optionsUpper = "";
-                            var petOptions = "";
-                            var newOptionsArray = [];
-
-                            if (obj !== undefined && obj.length !== undefined && Array.isArray(obj) && obj !== 0) {
-                                optionsArray = Object.values(obj);
-                                for (var key in optionsArray) {
-                                    options = (optionsArray[key].$t);
-                                    optionsUpper = options.charAt(0).toUpperCase() + options.substr(1);
-                                    petOptions = optionsUpper.replace(/([A-Z])/g, ' $1').trim();
-                                    newOptionsArray.push(petOptions);
-                                }
-                            } else {
-                                currentPet.options = "N/A";
-                            }
-
-                            // if(pets.pet[i].media.photos.photo[i] == undefined){
-                            //   console.log('no photo available');
-                            //    this.showError = true;
-                            //    this.showStatus = false;
-                            //    this.showOutput = false;S
-                            //  }
-
-                            // retrieves first image if there are multiple images
-                            var petImage = "http://photos.petfinder.com/v2/photos/pets/<currentPet.id>";
-                            petImage = petImage.replace("http", "https");
-                            petImage = petImage.replace("<currentPet.id>", currentPet.id);
+        });
 
 
-                            if (currentPet.image === null) {
-                                petImage = "images/imgnotfound.jpg";
-                                console.log("there is no image");
-                            }
+fetch('https://api.petfinder.com/v2/animals?organization='+ org + '&type=' + animal_type + '&age=' + age + '&gender=' + gender + '&size=' + size + '&status=' + status, {
+    headers: {
+        'Authorization': 'Bearer' + ' ' + token,
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
+}).then(function (resp) {
 
-                            this.newOptionsArray = newOptionsArray;
-                            this.petsArray.push(Object.assign({}, currentPet));
-                            this.showOutput = true;
-                        }
-                    },
+  var pet_data = resp.json();
+  console.log(pet_data);
+	// Return the API response as JSON
+	return pet_data;
 
-                    // hides next and previous buttons until submit button is clicked
-                    showBtn: function() {
-                        document.getElementById('prev').style.display = "block";
-                        document.getElementById('next').style.display = "block";
-                    },
+}).then(function (pet_data) {
 
-                    displayOptions: function() {
-                        var x = document.getElementById("petOptions");
-                        if (this.animalType == 'bird' || this.animalType == 'reptile' || this.animalType == 'smallfurry') {
-                            x.style.display = "none";
-                        } else {
-                            x.style.display = "block";
-                        }
-                    },
+	// Log the pet data
+	 console.log('pets', pet_data);
 
-                    nextPage: function() {
-                        if (this.pageNum * 3 < this.petsArray.length) {
-                            this.pageNum += 1;
-                            this.itemCount = (this.pageNum * 3) + 3;
-                            this.remainder = (this.itemCount % this.petsArray.length);
+}).catch(function (err) {
 
-                        }
-                        console.log(this.itemCount + " divided by " + this.petsArray.length + " = a remainder of " + this.remainder);
-                        if (this.remainder >= 24) {
-                            console.log('there is a remainder less than 3');
+	// Log any errors
+	console.log('something went wrong', err);
 
-                        }
-                    },
-                    previousPage: function() {
-                        if (this.pageNum > 0) {
-                            this.pageNum -= 1;
-                            this.itemCount -= 3;
-                            this.remainder = this.petsArray.length % this.itemCount;
-                        }
-                    },
-                    reloadForm: function() {
-                        window.location.reload(true);
-                    }
-            },
-            computed: {
-                displayArray: function() {
-                    return this.petsArray.slice(this.pageNum * 3, (this.pageNum * 3) + 3);
-                }
-            },
-        }
+});
+
+catchResponse: function(pet_data) {
+//             // var pets = data.petfinder.pets;
+            var count = 3;
+//             // var status = 'adoptable';
+//             // var lastOffset = data.petfinder.header.lastOffset.$t;
+//             // console.log(lastOffset);
+           console.log(pet_data);
+         }
+//
+//             if (statusCode !== "100") {
+//                 console.log('there was an error' + statusCode);
+//                 this.showError = true;
+//                 this.showStatus = false;
+//                 this.showOutput = false;
+//             }
+//
+//             for (var i = 0; i < pets.pet.length; i++) {
+//                 var currentPet = [];
+//
+//                 if (pets.pet[i].status === 'adoptable') {
+//                     // numberOfItemsViewed += numberOfItemsViewed;
+//                     this.showError = false;
+//                     this.showStatus = false;
+//                     // used in search
+//                     currentPet.animalType = pets.pet[i].animal.$t;
+//                     currentPet.animalAge = pets.pet[i].age.$t;
+//                     currentPet.animalSize = pets.pet[i].size.$t;
+//                     currentPet.animalSex = pets.pet[i].sex.$t;
+//                     // for response, not displayed
+//                     currentPet.id = pets.pet[i].id.$t;
+//                     currentPet.zipCode = pets.pet[i].contact.zip.$t;
+//                     //for response, displayed
+//                     currentPet.city = pets.pet[i].contact.city.$t;
+//                     currentPet.name = pets.pet[i].name.$t;
+//                     currentPet.description = pets.pet[i].description.$t;
+//                     currentPet.email = pets.pet[i].contact.email.$t;
+//                     currentPet.phone = pets.pet[i].contact.phone.$t;
+//                     currentPet.breed = pets.pet[i].breeds.breed.$t;
+//                     currentPet.image = pets.pet[i].media.photos.photo[3].$t;
+//                     currentPet.showOutput = true;
+//                 }
+//
+//                 if (pets.pet.mix === 'Yes' || pets.pet[i].breeds.breed.length > 0) {
+//                     currentPet.breed = (pets.pet[i].breeds.breed[0].$t) + ' / ' + (pets.pet[i].breeds.breed[1].$t)
+//                 } else {
+//                     currentPet.breed = pets.pet[i].breeds.breed.$t;
+//                 }
+//
+//                 if (currentPet.phone == undefined) {
+//                     currentPet.phone = "N/A";
+//                 }
+//
+//                 if (currentPet.email == undefined) {
+//                     currentPet.email = "N/A";
+//                 }
+//
+//                 if (currentPet.description == undefined) {
+//                     currentPet.description = "N/A";
+//                     console.log("N/A");
+//                 }
+//
+//                 var obj = pets.pet[i].options.option;
+//                 var optionsArray = [];
+//                 var options = "";
+//                 var optionsUpper = "";
+//                 var petOptions = "";
+//                 var newOptionsArray = [];
+//
+//                 if (obj !== undefined && obj.length !== undefined && Array.isArray(obj) && obj !== 0) {
+//                     optionsArray = Object.values(obj);
+//                     for (var key in optionsArray) {
+//                         options = (optionsArray[key].$t);
+//                         optionsUpper = options.charAt(0).toUpperCase() + options.substr(1);
+//                         petOptions = optionsUpper.replace(/([A-Z])/g, ' $1').trim();
+//                         newOptionsArray.push(petOptions);
+//                     }
+//                 } else {
+//                     currentPet.options = "N/A";
+//                 }
+//
+//                 // if(pets.pet[i].media.photos.photo[i] == undefined){
+//                 //   console.log('no photo available');
+//                 //    this.showError = true;
+//                 //    this.showStatus = false;
+//                 //    this.showOutput = false;S
+//                 //  }
+//
+//                 // retrieves first image if there are multiple images
+//                 var petImage = "http://photos.petfinder.com/v2/photos/pets/<currentPet.id>";
+//                 petImage = petImage.replace("http", "https");
+//                 petImage = petImage.replace("<currentPet.id>", currentPet.id);
+//
+//
+//                 if (currentPet.image === null) {
+//                     petImage = "images/imgnotfound.jpg";
+//                     console.log("there is no image");
+//                 }
+//
+//                 this.newOptionsArray = newOptionsArray;
+//                 this.petsArray.push(Object.assign({}, currentPet));
+//                 this.showOutput = true;
+//             }
+//         },
+//
+//         // hides next and previous buttons until submit button is clicked
+//         showBtn: function() {
+//             document.getElementById('prev').style.display = "block";
+//             document.getElementById('next').style.display = "block";
+//         },
+//
+//         displayOptions: function() {
+//             var x = document.getElementById("petOptions");
+//             if (this.animalType == 'bird' || this.animalType == 'reptile' || this.animalType == 'smallfurry') {
+//                 x.style.display = "none";
+//             } else {
+//                 x.style.display = "block";
+//             }
+//         },
+//
+//         nextPage: function() {
+//             if (this.pageNum * 3 < this.petsArray.length) {
+//                 this.pageNum += 1;
+//                 this.itemCount = (this.pageNum * 3) + 3;
+//                 this.remainder = (this.itemCount % this.petsArray.length);
+//
+//             }
+//             console.log(this.itemCount + " divided by " + this.petsArray.length + " = a remainder of " + this.remainder);
+//             if (this.remainder >= 24) {
+//                 console.log('there is a remainder less than 3');
+//
+//             }
+//         },
+//         previousPage: function() {
+//             if (this.pageNum > 0) {
+//                 this.pageNum -= 1;
+//                 this.itemCount -= 3;
+//                 this.remainder = this.petsArray.length % this.itemCount;
+//             }
+//         },
+//         reloadForm: function() {
+//             window.location.reload(true);
+//         }
+// },
+// computed: {
+//     displayArray: function() {
+//         return this.petsArray.slice(this.pageNum * 3, (this.pageNum * 3) + 3);
+//     }
+},
+}
 </script>

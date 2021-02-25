@@ -6,13 +6,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Bootstrap-->
+    <!-- <link href="{{ asset('/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" > -->
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" >
     <script defer src="{{ mix('js/app.js') }}"></script>
 
-    <title>Beth's Natural Pets @yield('title')</title>
+    <title>Beth's PetStop @yield('title')</title>
 </head>
     @include('inc._navbar')
 <body>
