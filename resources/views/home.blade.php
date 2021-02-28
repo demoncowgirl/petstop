@@ -14,8 +14,8 @@
       </div>
 
       <div id="pets" class="image">
-        <img src="{{asset('images/ellie.jpg')}}">
-        <img src="{{asset('images/peaches.jpg')}}">
+        <img src=url('../images/ellie.jpg'>
+        <img src=url('.../images/peaches.jpg'>
       </div>
 </div>
 @endsection

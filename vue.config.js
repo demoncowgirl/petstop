@@ -1,11 +1,13 @@
-// vue.config.js
-// vue.config.js
+const webpack = require("webpack");
+
+process.env.NODE_ENV = process.env.NODE_ENV || "development";
+
 module.exports = {
   configureWebpack: config => {
     if (process.env.NODE_ENV === 'production') {
-      // mutate config for production...
+        require("dotenv").config({ path: ".env.development" });
     } else {
-      // mutate for development...
+
     }
   }
 }
