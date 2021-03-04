@@ -11,8 +11,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}" >
-    <script defer src="{{ mix('js/app.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" >
+    <!-- <script defer src="{{ asset('js/app.js') }}"></script> -->
+
 
     <title>Beth's PetStop @yield('title')</title>
 </head>
@@ -37,6 +38,7 @@
   </div>
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="{{ mix('/js/app.js') }}"></script>
 
 </body>
 </html>

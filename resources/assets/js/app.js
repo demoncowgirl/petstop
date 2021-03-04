@@ -4,6 +4,9 @@ window.Vue = require('vue');
 
 Vue.component('petfinderapi', require('./components/PetfinderAPI.vue').default);
 
-const app = new Vue({
+const app = createApp({
     el: '#services',
 });
+
+//
+// createApp(App).mount('#app');

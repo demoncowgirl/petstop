@@ -1,9 +1,8 @@
 <template>
-  <h1>Do you see this?</h6>
   <div id="petSearchInput" class="container-fluid" style="width: auto;">
     <div class="form-group">
       <label for="searchZip">ZipCode</label>
-      <input type="text" name="zipCode" value="" class="input-sm" placeholder="Zipcode Required" style="width: auto;" v-model='searchZip' required>
+      <input type="text" name="zipCode" class="input-sm" placeholder="Zipcode Required" style="width: auto;" v-model='searchZip' required>
 
       <label for="animal">Animal Type</label>
       <select name="type" v-model='animalType'>
@@ -91,11 +90,11 @@
             </div>
         </div>
     </div>
-</div>
 </template>
 
 <script>
-export default = {
+app.mount("#app");
+export default {
     data: function() {
         return {
             showOutput: false,
@@ -131,12 +130,12 @@ export default = {
 },
 mounted() {  console.log('Component mounted.')},
 
-created: function() {
-      this.$url.get("https://api.petfinder.com/v2/animals")
-          .then(res => {
-              this.data = res.data;
-  }
-},
+// created: function() {
+//       this.$url.get("https://api.petfinder.com/v2/animals")
+//           .then(res => {
+//               this.data = res.data;
+//   }
+// },
 
 methods: {
     getToken: function() {
@@ -317,10 +316,10 @@ catchResponse: function(pet_data) {
         // },
 
         // hides next and previous buttons until submit button is clicked
-        showBtn: function() {
-            document.getElementById('prev').style.display = "block";
-            document.getElementById('next').style.display = "block";
-        },
+        // showBtn: function() {
+        //     document.getElementById('prev').style.display = "block";
+        //     document.getElementById('next').style.display = "block";
+        // },
 
         // displayOptions: function() {
         //     var x = document.getElementById("petOptions");

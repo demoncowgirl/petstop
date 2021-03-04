@@ -1,4 +1,15 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/images/bones30.png": "/images/bones30.png",
+    "/images/bones40.png": "/images/bones40.png",
+    "/images/bones50.png": "/images/bones50.png",
+    "/images/cat_prints.gif": "/images/cat_prints.gif",
+    "/images/ellie.jpg": "/images/ellie.jpg",
+    "/images/golden_retr_wagging.gif": "/images/golden_retr_wagging.gif",
+    "/images/lab_running.gif": "/images/lab_running.gif",
+    "/images/love-825283_640.png": "/images/love-825283_640.png",
+    "/images/peaches.jpg": "/images/peaches.jpg",
+    "/images/piccolo.jpg": "/images/piccolo.jpg",
+    "/images/terrier.gif": "/images/terrier.gif"
 }
